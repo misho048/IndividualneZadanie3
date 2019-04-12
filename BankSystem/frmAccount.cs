@@ -12,12 +12,15 @@ namespace BankSystem
 {
     public partial class frmAccount : Form
     {
+        BSLogic _logic;
         /// <summary>
         /// Used when adding new account.
         /// </summary>
-        public frmAccount()
+        public frmAccount(BSLogic logic)
         {
+            _logic = logic;
             InitializeComponent();
+            labelIban.Text = _logic.GenerateIBAN();
         }
 
         /// <summary>
@@ -27,6 +30,32 @@ namespace BankSystem
         public frmAccount(int clientId)
         {
             InitializeComponent();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
+            _logic.CreateUser(txtboxFirstName.Text, txtBoxSurname.Text, txtBoxIDCardNumber.Text,
+                txtBoxPhoneNumber.Text, txtBoxEmail.Text, txtBoxStreetName.Text, Convert.ToInt32(txtHomeNumber.Text),
+                txtBoxCity.Text, txtBoxPostalCode.Text,Convert.ToDecimal(cmbBoxDebetLimit.Text));
+
+
+            DialogResult = DialogResult.OK;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }

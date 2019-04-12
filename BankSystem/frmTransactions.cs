@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data.Repositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,13 +13,17 @@ namespace BankSystem
 {
     public partial class frmTransactions : Form
     {
-
+        BSLogic _logic;
         /// <summary>
         /// Used when viewing all transactions.
         /// </summary>
-        public frmTransactions()
+        public frmTransactions(BSLogic logic)
         {
             InitializeComponent();
+            _logic = logic;
+
+            dGVTransactions.DataSource = _logic.GetTransactions();
+            
         }
 
         /// <summary>

@@ -6,7 +6,7 @@ namespace Controls
 {
     [ToolboxItem(true)]
     [Description("Textbox supporting only numeric values.")]
-    class NumericTextBox : TextBox
+   public  class NumericTextBox : TextBox
     {
 
         #region Attributes

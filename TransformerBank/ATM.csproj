@@ -46,6 +46,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ATMLogic.cs" />
+    <Compile Include="ATMBalance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ATMBalance.Designer.cs">
+      <DependentUpon>ATMBalance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ATMwithdraw.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ATMwithdraw.Designer.cs">
+      <DependentUpon>ATMwithdraw.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ATMwithdrawSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ATMwithdrawSelect.Designer.cs">
+      <DependentUpon>ATMwithdrawSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmATMChoosing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmATMChoosing.Designer.cs">
+      <DependentUpon>FrmATMChoosing.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +79,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ATMBalance.resx">
+      <DependentUpon>ATMBalance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ATMwithdraw.resx">
+      <DependentUpon>ATMwithdraw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ATMwithdrawSelect.resx">
+      <DependentUpon>ATMwithdrawSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmATMChoosing.resx">
+      <DependentUpon>FrmATMChoosing.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>

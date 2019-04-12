@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BSLogic.cs" />
     <Compile Include="frmClientManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +133,10 @@
     <ProjectReference Include="..\Data\Data.csproj">
       <Project>{30ba08c2-845e-4062-ad82-153977bb26e9}</Project>
       <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TransformerBank\ATM.csproj">
+      <Project>{dfec4fb5-5a4d-4189-97bd-a3ce26470357}</Project>
+      <Name>ATM</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

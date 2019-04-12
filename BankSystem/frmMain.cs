@@ -12,6 +12,7 @@ namespace BankSystem
 {
     public partial class frmMain : Form
     {
+        private BSLogic _logic = new BSLogic();
         public frmMain()
         {
             InitializeComponent();
@@ -27,8 +28,9 @@ namespace BankSystem
 
         private void cmdNewAccount_Click(object sender, EventArgs e)
         {
-            using (frmAccount newForm = new frmAccount())
+            using (frmAccount newForm = new frmAccount(_logic))
             {
+
                 newForm.ShowDialog();
             }
         }
@@ -43,10 +45,15 @@ namespace BankSystem
 
         private void cmdAllTransactions_Click(object sender, EventArgs e)
         {
-            using (frmTransactions newForm = new frmTransactions())
+            using (frmTransactions newForm = new frmTransactions(_logic))
             {
                 newForm.ShowDialog();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+       
         }
     }
 }
