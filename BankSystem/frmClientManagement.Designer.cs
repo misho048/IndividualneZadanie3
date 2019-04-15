@@ -28,64 +28,50 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.cmdUpdate = new System.Windows.Forms.Button();
-            this.cmdNewTransaction = new System.Windows.Forms.Button();
             this.cmdCloseAccount = new System.Windows.Forms.Button();
             this.cmdAllTransactions = new System.Windows.Forms.Button();
-            this.cmdWithdrawal = new System.Windows.Forms.Button();
-            this.cmdDeposit = new System.Windows.Forms.Button();
+            this.cmdNewTransaction = new System.Windows.Forms.Button();
+            this.buttonNewCreditCard = new System.Windows.Forms.Button();
+            this.dGVCreditcards = new System.Windows.Forms.DataGridView();
+            this.buttonChangePin = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.textBoxSurname = new System.Windows.Forms.TextBox();
+            this.textBoxIDCardNumber = new System.Windows.Forms.TextBox();
+            this.textBoxPhoneNumber = new System.Windows.Forms.TextBox();
+            this.textBoxCity = new System.Windows.Forms.TextBox();
+            this.textBoxPostalCode = new System.Windows.Forms.TextBox();
+            this.textBoxDebtLimit = new System.Windows.Forms.TextBox();
+            this.textBoxBalance = new System.Windows.Forms.TextBox();
+            this.textBoxIban = new System.Windows.Forms.TextBox();
+            this.buttonBlockUnblock = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dGVCreditcards)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.Cyan;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(16, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(975, 175);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Niekde v tomto okne budú stručné NEEDITOVATEĽNÉ informácie o účte, klientovi, akt" +
-    "uálnom zostatku na účte a povolenom prečerpaní.";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cmdUpdate
             // 
-            this.cmdUpdate.Location = new System.Drawing.Point(16, 211);
-            this.cmdUpdate.Margin = new System.Windows.Forms.Padding(4);
+            this.cmdUpdate.Location = new System.Drawing.Point(825, 93);
             this.cmdUpdate.Name = "cmdUpdate";
-            this.cmdUpdate.Size = new System.Drawing.Size(149, 28);
+            this.cmdUpdate.Size = new System.Drawing.Size(112, 23);
             this.cmdUpdate.TabIndex = 4;
             this.cmdUpdate.Text = "Update info";
             this.cmdUpdate.UseVisualStyleBackColor = true;
             this.cmdUpdate.Click += new System.EventHandler(this.cmdUpdate_Click);
             // 
-            // cmdNewTransaction
-            // 
-            this.cmdNewTransaction.Location = new System.Drawing.Point(523, 315);
-            this.cmdNewTransaction.Margin = new System.Windows.Forms.Padding(4);
-            this.cmdNewTransaction.Name = "cmdNewTransaction";
-            this.cmdNewTransaction.Size = new System.Drawing.Size(149, 28);
-            this.cmdNewTransaction.TabIndex = 5;
-            this.cmdNewTransaction.Text = "New transaction";
-            this.cmdNewTransaction.UseVisualStyleBackColor = true;
-            this.cmdNewTransaction.Click += new System.EventHandler(this.cmdNewTransaction_Click);
-            // 
             // cmdCloseAccount
             // 
-            this.cmdCloseAccount.Location = new System.Drawing.Point(523, 423);
-            this.cmdCloseAccount.Margin = new System.Windows.Forms.Padding(4);
+            this.cmdCloseAccount.Location = new System.Drawing.Point(829, 363);
             this.cmdCloseAccount.Name = "cmdCloseAccount";
-            this.cmdCloseAccount.Size = new System.Drawing.Size(149, 28);
+            this.cmdCloseAccount.Size = new System.Drawing.Size(112, 23);
             this.cmdCloseAccount.TabIndex = 6;
             this.cmdCloseAccount.Text = "Close account";
             this.cmdCloseAccount.UseVisualStyleBackColor = true;
@@ -93,164 +79,302 @@
             // 
             // cmdAllTransactions
             // 
-            this.cmdAllTransactions.Location = new System.Drawing.Point(523, 211);
-            this.cmdAllTransactions.Margin = new System.Windows.Forms.Padding(4);
+            this.cmdAllTransactions.Location = new System.Drawing.Point(825, 51);
             this.cmdAllTransactions.Name = "cmdAllTransactions";
-            this.cmdAllTransactions.Size = new System.Drawing.Size(149, 28);
+            this.cmdAllTransactions.Size = new System.Drawing.Size(112, 23);
             this.cmdAllTransactions.TabIndex = 8;
             this.cmdAllTransactions.Text = "All transactions";
             this.cmdAllTransactions.UseVisualStyleBackColor = true;
             this.cmdAllTransactions.Click += new System.EventHandler(this.cmdAllTransactions_Click);
             // 
-            // cmdWithdrawal
+            // cmdNewTransaction
             // 
-            this.cmdWithdrawal.Location = new System.Drawing.Point(16, 423);
-            this.cmdWithdrawal.Margin = new System.Windows.Forms.Padding(4);
-            this.cmdWithdrawal.Name = "cmdWithdrawal";
-            this.cmdWithdrawal.Size = new System.Drawing.Size(149, 28);
-            this.cmdWithdrawal.TabIndex = 9;
-            this.cmdWithdrawal.Text = "Withdrawal";
-            this.cmdWithdrawal.UseVisualStyleBackColor = true;
-            this.cmdWithdrawal.Click += new System.EventHandler(this.cmdWithdrawal_Click);
+            this.cmdNewTransaction.Location = new System.Drawing.Point(825, 12);
+            this.cmdNewTransaction.Name = "cmdNewTransaction";
+            this.cmdNewTransaction.Size = new System.Drawing.Size(112, 23);
+            this.cmdNewTransaction.TabIndex = 5;
+            this.cmdNewTransaction.Text = "New transaction";
+            this.cmdNewTransaction.UseVisualStyleBackColor = true;
+            this.cmdNewTransaction.Click += new System.EventHandler(this.cmdNewTransaction_Click);
             // 
-            // cmdDeposit
+            // buttonNewCreditCard
             // 
-            this.cmdDeposit.Location = new System.Drawing.Point(16, 315);
-            this.cmdDeposit.Margin = new System.Windows.Forms.Padding(4);
-            this.cmdDeposit.Name = "cmdDeposit";
-            this.cmdDeposit.Size = new System.Drawing.Size(149, 28);
-            this.cmdDeposit.TabIndex = 10;
-            this.cmdDeposit.Text = "Deposit";
-            this.cmdDeposit.UseVisualStyleBackColor = true;
-            this.cmdDeposit.Click += new System.EventHandler(this.cmdDeposit_Click);
+            this.buttonNewCreditCard.Location = new System.Drawing.Point(829, 198);
+            this.buttonNewCreditCard.Name = "buttonNewCreditCard";
+            this.buttonNewCreditCard.Size = new System.Drawing.Size(108, 23);
+            this.buttonNewCreditCard.TabIndex = 12;
+            this.buttonNewCreditCard.Text = "New credit card";
+            this.buttonNewCreditCard.UseVisualStyleBackColor = true;
+            this.buttonNewCreditCard.Click += new System.EventHandler(this.buttonNewCreditCard_Click);
+            // 
+            // dGVCreditcards
+            // 
+            this.dGVCreditcards.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dGVCreditcards.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGVCreditcards.Location = new System.Drawing.Point(0, 249);
+            this.dGVCreditcards.Name = "dGVCreditcards";
+            this.dGVCreditcards.RowHeadersVisible = false;
+            this.dGVCreditcards.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dGVCreditcards.Size = new System.Drawing.Size(787, 165);
+            this.dGVCreditcards.TabIndex = 14;
+            // 
+            // buttonChangePin
+            // 
+            this.buttonChangePin.Location = new System.Drawing.Point(829, 249);
+            this.buttonChangePin.Name = "buttonChangePin";
+            this.buttonChangePin.Size = new System.Drawing.Size(108, 23);
+            this.buttonChangePin.TabIndex = 15;
+            this.buttonChangePin.Text = "Change Pin";
+            this.buttonChangePin.UseVisualStyleBackColor = true;
+            this.buttonChangePin.Click += new System.EventHandler(this.buttonChangePin_Click);
             // 
             // label2
             // 
-            this.label2.BackColor = System.Drawing.Color.DarkMagenta;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(999, 11);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(91, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(253, 478);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Niekde v tomto okne bude grid s platobnými kartami priradenými k účtu.";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Size = new System.Drawing.Size(66, 24);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Name:";
             // 
             // label3
             // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.ForeColor = System.Drawing.Color.MediumPurple;
-            this.label3.Location = new System.Drawing.Point(170, 201);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(65, 47);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(311, 74);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "< Odklik na úpravu údajov o účte/klientovi";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.Size = new System.Drawing.Size(92, 24);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Surname:";
             // 
             // label4
             // 
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.label4.Location = new System.Drawing.Point(680, 415);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.Location = new System.Drawing.Point(12, 87);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(311, 74);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "< Odklik na zatvorenie účtu";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label4.Size = new System.Drawing.Size(145, 24);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "ID card number:";
             // 
             // label5
             // 
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.ForeColor = System.Drawing.Color.Olive;
-            this.label5.Location = new System.Drawing.Point(170, 306);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label5.Location = new System.Drawing.Point(15, 133);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(311, 74);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "< Odklik na vloženie peňazí na účet";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label5.Size = new System.Drawing.Size(142, 24);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Phone number:";
             // 
-            // label6
+            // label9
             // 
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.ForeColor = System.Drawing.Color.LimeGreen;
-            this.label6.Location = new System.Drawing.Point(173, 415);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(311, 74);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "< Odklik na výber peňazí z účtu";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label9.Location = new System.Drawing.Point(112, 170);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(45, 24);
+            this.label9.TabIndex = 24;
+            this.label9.Text = "City:";
             // 
-            // label7
+            // label10
             // 
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label7.ForeColor = System.Drawing.Color.LightSlateGray;
-            this.label7.Location = new System.Drawing.Point(680, 201);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(311, 74);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "< Odklik na zobrazenie transakcií na účte";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label10.Location = new System.Drawing.Point(41, 208);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(116, 24);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Postal Code:";
             // 
-            // label8
+            // label11
             // 
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label8.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label8.Location = new System.Drawing.Point(680, 306);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(311, 74);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "< Odklik na zadanie novej transakcie";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label11.Location = new System.Drawing.Point(421, 9);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(58, 24);
+            this.label11.TabIndex = 26;
+            this.label11.Text = "IBAN:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label12.Location = new System.Drawing.Point(396, 47);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(83, 24);
+            this.label12.TabIndex = 27;
+            this.label12.Text = "Balance:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label13.Location = new System.Drawing.Point(388, 92);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(91, 24);
+            this.label13.TabIndex = 28;
+            this.label13.Text = "Debt limit:";
+            // 
+            // textBoxName
+            // 
+            this.textBoxName.Enabled = false;
+            this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxName.Location = new System.Drawing.Point(163, 13);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(210, 22);
+            this.textBoxName.TabIndex = 29;
+            // 
+            // textBoxSurname
+            // 
+            this.textBoxSurname.Enabled = false;
+            this.textBoxSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxSurname.Location = new System.Drawing.Point(163, 51);
+            this.textBoxSurname.Name = "textBoxSurname";
+            this.textBoxSurname.Size = new System.Drawing.Size(210, 22);
+            this.textBoxSurname.TabIndex = 30;
+            // 
+            // textBoxIDCardNumber
+            // 
+            this.textBoxIDCardNumber.Enabled = false;
+            this.textBoxIDCardNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxIDCardNumber.Location = new System.Drawing.Point(163, 91);
+            this.textBoxIDCardNumber.Name = "textBoxIDCardNumber";
+            this.textBoxIDCardNumber.Size = new System.Drawing.Size(210, 22);
+            this.textBoxIDCardNumber.TabIndex = 31;
+            // 
+            // textBoxPhoneNumber
+            // 
+            this.textBoxPhoneNumber.Enabled = false;
+            this.textBoxPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxPhoneNumber.Location = new System.Drawing.Point(163, 137);
+            this.textBoxPhoneNumber.Name = "textBoxPhoneNumber";
+            this.textBoxPhoneNumber.Size = new System.Drawing.Size(210, 22);
+            this.textBoxPhoneNumber.TabIndex = 32;
+            // 
+            // textBoxCity
+            // 
+            this.textBoxCity.Enabled = false;
+            this.textBoxCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxCity.Location = new System.Drawing.Point(163, 174);
+            this.textBoxCity.Name = "textBoxCity";
+            this.textBoxCity.Size = new System.Drawing.Size(210, 22);
+            this.textBoxCity.TabIndex = 33;
+            // 
+            // textBoxPostalCode
+            // 
+            this.textBoxPostalCode.Enabled = false;
+            this.textBoxPostalCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxPostalCode.Location = new System.Drawing.Point(163, 212);
+            this.textBoxPostalCode.Name = "textBoxPostalCode";
+            this.textBoxPostalCode.Size = new System.Drawing.Size(210, 22);
+            this.textBoxPostalCode.TabIndex = 34;
+            // 
+            // textBoxDebtLimit
+            // 
+            this.textBoxDebtLimit.Enabled = false;
+            this.textBoxDebtLimit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxDebtLimit.Location = new System.Drawing.Point(485, 92);
+            this.textBoxDebtLimit.Name = "textBoxDebtLimit";
+            this.textBoxDebtLimit.Size = new System.Drawing.Size(210, 22);
+            this.textBoxDebtLimit.TabIndex = 37;
+            // 
+            // textBoxBalance
+            // 
+            this.textBoxBalance.Enabled = false;
+            this.textBoxBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxBalance.Location = new System.Drawing.Point(485, 47);
+            this.textBoxBalance.Name = "textBoxBalance";
+            this.textBoxBalance.Size = new System.Drawing.Size(210, 22);
+            this.textBoxBalance.TabIndex = 36;
+            // 
+            // textBoxIban
+            // 
+            this.textBoxIban.Enabled = false;
+            this.textBoxIban.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxIban.Location = new System.Drawing.Point(485, 9);
+            this.textBoxIban.Name = "textBoxIban";
+            this.textBoxIban.Size = new System.Drawing.Size(210, 22);
+            this.textBoxIban.TabIndex = 35;
+            // 
+            // buttonBlockUnblock
+            // 
+            this.buttonBlockUnblock.Location = new System.Drawing.Point(829, 298);
+            this.buttonBlockUnblock.Name = "buttonBlockUnblock";
+            this.buttonBlockUnblock.Size = new System.Drawing.Size(108, 44);
+            this.buttonBlockUnblock.TabIndex = 38;
+            this.buttonBlockUnblock.Text = "Block/Unblock Card";
+            this.buttonBlockUnblock.UseVisualStyleBackColor = true;
             // 
             // frmClientManagement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1265, 505);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
+            this.ClientSize = new System.Drawing.Size(949, 410);
+            this.Controls.Add(this.buttonBlockUnblock);
+            this.Controls.Add(this.textBoxDebtLimit);
+            this.Controls.Add(this.textBoxBalance);
+            this.Controls.Add(this.textBoxIban);
+            this.Controls.Add(this.textBoxPostalCode);
+            this.Controls.Add(this.textBoxCity);
+            this.Controls.Add(this.textBoxPhoneNumber);
+            this.Controls.Add(this.textBoxIDCardNumber);
+            this.Controls.Add(this.textBoxSurname);
+            this.Controls.Add(this.textBoxName);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.cmdDeposit);
-            this.Controls.Add(this.cmdWithdrawal);
+            this.Controls.Add(this.buttonChangePin);
+            this.Controls.Add(this.dGVCreditcards);
+            this.Controls.Add(this.buttonNewCreditCard);
             this.Controls.Add(this.cmdAllTransactions);
             this.Controls.Add(this.cmdCloseAccount);
             this.Controls.Add(this.cmdNewTransaction);
             this.Controls.Add(this.cmdUpdate);
-            this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmClientManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmClientManagement";
+            this.Load += new System.EventHandler(this.frmClientManagement_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dGVCreditcards)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button cmdUpdate;
-        private System.Windows.Forms.Button cmdNewTransaction;
         private System.Windows.Forms.Button cmdCloseAccount;
         private System.Windows.Forms.Button cmdAllTransactions;
-        private System.Windows.Forms.Button cmdWithdrawal;
-        private System.Windows.Forms.Button cmdDeposit;
+        private System.Windows.Forms.Button cmdNewTransaction;
+        private System.Windows.Forms.Button buttonNewCreditCard;
+        private System.Windows.Forms.DataGridView dGVCreditcards;
+        private System.Windows.Forms.Button buttonChangePin;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.TextBox textBoxSurname;
+        private System.Windows.Forms.TextBox textBoxIDCardNumber;
+        private System.Windows.Forms.TextBox textBoxPhoneNumber;
+        private System.Windows.Forms.TextBox textBoxCity;
+        private System.Windows.Forms.TextBox textBoxPostalCode;
+        private System.Windows.Forms.TextBox textBoxDebtLimit;
+        private System.Windows.Forms.TextBox textBoxBalance;
+        private System.Windows.Forms.TextBox textBoxIban;
+        private System.Windows.Forms.Button buttonBlockUnblock;
     }
 }

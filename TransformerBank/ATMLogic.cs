@@ -29,12 +29,12 @@ namespace TransformerBank
         {
             TransactionModel model = new TransactionModel();
 
-            model.IDFrom = AccRepo.SelectAccountIDByCard(cardNumber);
+            model.IDFrom = AccRepo.SelectAccountIDByCard(cardNumber).ToString();
             model.IDTo = model.IDFrom;
             model.Value = Value;
             model.Type = "Withdraw";
-            AccRepo.MakeWithdraw(cardNumber, Value);
-            TransRepo.SaveTransaction(model);
+            //AccRepo.MakeWithdraw(cardNumber, Value);
+            TransRepo.SaveTransactionWithdraw(AccRepo.SelectAccountIDByCard(cardNumber),Value);
         }
 
 

@@ -36,13 +36,17 @@
             // 
             this.dGVTransactions.AllowUserToAddRows = false;
             this.dGVTransactions.AllowUserToDeleteRows = false;
-            this.dGVTransactions.AllowUserToOrderColumns = true;
             this.dGVTransactions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dGVTransactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGVTransactions.Location = new System.Drawing.Point(28, 12);
+            this.dGVTransactions.MultiSelect = false;
             this.dGVTransactions.Name = "dGVTransactions";
+            this.dGVTransactions.ReadOnly = true;
+            this.dGVTransactions.RowHeadersVisible = false;
+            this.dGVTransactions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGVTransactions.Size = new System.Drawing.Size(829, 348);
             this.dGVTransactions.TabIndex = 0;
+            this.dGVTransactions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGVTransactions_CellContentClick);
             // 
             // frmTransactions
             // 

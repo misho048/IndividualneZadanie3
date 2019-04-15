@@ -219,6 +219,7 @@
             // btn100
             // 
             this.btn100.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btn100.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btn100.Location = new System.Drawing.Point(12, 21);
             this.btn100.Name = "btn100";
             this.btn100.Size = new System.Drawing.Size(75, 62);
@@ -229,6 +230,7 @@
             // btn50
             // 
             this.btn50.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btn50.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btn50.Location = new System.Drawing.Point(12, 139);
             this.btn50.Name = "btn50";
             this.btn50.Size = new System.Drawing.Size(75, 62);
@@ -239,6 +241,7 @@
             // btn10
             // 
             this.btn10.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btn10.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btn10.Location = new System.Drawing.Point(12, 257);
             this.btn10.Name = "btn10";
             this.btn10.Size = new System.Drawing.Size(75, 62);
@@ -249,6 +252,7 @@
             // btnBack
             // 
             this.btnBack.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnBack.Location = new System.Drawing.Point(12, 363);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 62);
@@ -259,6 +263,7 @@
             // btn20
             // 
             this.btn20.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btn20.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btn20.Location = new System.Drawing.Point(831, 21);
             this.btn20.Name = "btn20";
             this.btn20.Size = new System.Drawing.Size(75, 62);
@@ -269,6 +274,7 @@
             // btn5
             // 
             this.btn5.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btn5.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btn5.Location = new System.Drawing.Point(831, 139);
             this.btn5.Name = "btn5";
             this.btn5.Size = new System.Drawing.Size(75, 62);
@@ -279,6 +285,7 @@
             // btnConfirm
             // 
             this.btnConfirm.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnConfirm.Location = new System.Drawing.Point(831, 363);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(75, 62);
@@ -289,6 +296,7 @@
             // btnSelect
             // 
             this.btnSelect.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnSelect.Location = new System.Drawing.Point(831, 257);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(75, 62);

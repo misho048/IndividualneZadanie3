@@ -35,6 +35,7 @@ namespace TransformerBank
         {
             decimal value = note5 * 5 + note10 * 10 + note20 * 20 + note50 * 50 + note100 * 100 + note500 * 500;
             _logic.AddWithdrawTransaction(value, _cardNumber);
+
             DialogResult = DialogResult.OK;
         }
 

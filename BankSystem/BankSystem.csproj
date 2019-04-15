@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BSLogic.cs" />
+    <Compile Include="frmNewCreditcard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewCreditcard.Designer.cs">
+      <DependentUpon>frmNewCreditcard.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmClientManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewCreditcard.resx">
+      <DependentUpon>frmNewCreditcard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTransaction.resx">
       <DependentUpon>frmTransaction.cs</DependentUpon>

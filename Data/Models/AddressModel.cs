@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Data.Models
 {
-   public class AddressModel : IModels
+   public class AddressModel 
     {
+        /// <summary>
+        /// model to hold data for a Adress
+        /// </summary>
         public int ID { get; set; }
         public string StreetName { get; set; }
         public int HomeNumber { get; set; }

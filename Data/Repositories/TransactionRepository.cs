@@ -4,13 +4,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Data.Repositories
 {
-    public class TransactionRepository : IRepositories
+    public class TransactionRepository 
     {
         public IEnumerable<TransactionModel> GetTransactions()  {
             List<TransactionModel> transactions = new List<TransactionModel>();
@@ -32,11 +30,15 @@ namespace Data.Repositories
                             {
                                 TransactionModel transaction = new TransactionModel();
                                 transaction.ID = reader.GetInt32(0);
-                                transaction.IDFrom = reader.GetInt32(1);
-                                transaction.IDTo = reader.GetInt32(2);
+                                transaction.IDFrom = reader.GetInt32(1).ToString();
+                                transaction.IDTo = reader.GetInt32(2).ToString();
                                 transaction.Date = reader.GetDateTime(3);
                                 transaction.Value = reader.GetDecimal(4);
                                 transaction.Type = reader.GetString(5);
+                                transaction.VariableSymbol = reader.IsDBNull(6) ? "" : reader.GetString(6);
+                                transaction.SpecificSymbol = reader.IsDBNull(7) ? "" : reader.GetString(7);
+                                transaction.ConstantSymbol = reader.IsDBNull(8) ? "" : reader.GetString(8);
+                                transaction.Message = reader.IsDBNull(9) ? "" : reader.GetString(9);
 
                                 transactions.Add(transaction);
 
@@ -63,9 +65,14 @@ namespace Data.Repositories
             }
         }
 
-        public void SaveTransaction(TransactionModel transaction)
+        public void SaveTransactionWithdraw(int idFrom, decimal value)
         {
-            string query = @"insert into [dbo].[Transactions] values (@idFrom,@idTO,GETDATE(),@Value,@Type)";
+            string query = @"insert into [dbo].[Transactions] 
+                             values (@idFrom,@idFrom,GETDATE(),@value,'Withdraw',null,null,null,null);
+
+                             update Accounts
+                             set Balance=Balance-@value
+                             where Accounts.ID=@idFrom";
      
             try
             {
@@ -76,11 +83,108 @@ namespace Data.Repositories
                     {
                         connection.Open();
                         SqlCommand command = new SqlCommand(query, connection);
-                        command.Parameters.Add("@idFrom", SqlDbType.Int).Value = transaction.IDFrom;
-                        command.Parameters.Add("@idTo", SqlDbType.Int).Value = transaction.IDTo;
-                        command.Parameters.Add("@Value", SqlDbType.Money).Value = transaction.Value;
-                        command.Parameters.Add("@Type", SqlDbType.NVarChar).Value = transaction.Type;
+                        command.Parameters.Add("@idFrom", SqlDbType.NVarChar).Value = idFrom;                   
+                        command.Parameters.Add("@Value", SqlDbType.Money).Value = value;
+                  
                         command.ExecuteNonQuery();                       
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error ocured while quering " + ex.Message);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error ocured while connecting " + e.Message);
+            }
+
+        }
+         
+        /// <summary>
+        /// Overloading method for situation when we dont know uses ID
+        /// but we know his IDCard NUmber
+        /// </summary>
+        /// <param name="idFrom"></param>
+        /// <param name="value"></param>
+        public void SaveTransactionWithdraw(string clientIDCard, decimal value)
+        {
+       string query = @"insert into [dbo].[Transactions] 
+                        values ((select top 1 a.ID
+                        from Accounts as a
+                        left join Users as u on a.UserID=u.ID
+                        where u.IDCardNumber=@clientIdCard)
+                        ,(select top 1 a.ID
+                        from Accounts as a
+                        left join Users as u on a.UserID=u.ID
+                        where u.IDCardNumber=@clientIdCard)
+                        ,GETDATE(),@value,'Withdraw',null,null,null,null)
+
+                        update Accounts
+                        set Balance=Balance-@value
+                        where Accounts.ID=(select top 1 a.ID
+                        from Accounts as a
+                        left join Users as u on a.UserID=u.ID
+                        where u.IDCardNumber=@clientIdCard)";
+
+            try
+            {
+
+                using (SqlConnection connection = new SqlConnection(DbCons.CONNECTIONSTRING))
+                {
+                    try
+                    {
+                        connection.Open();
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.Add("@clientIdCard", SqlDbType.NVarChar).Value = clientIDCard;
+                        command.Parameters.Add("@value", SqlDbType.Money).Value = value;
+
+                        command.ExecuteNonQuery();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error ocured while quering " + ex.Message);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error ocured while connecting " + e.Message);
+            }
+
+        }
+
+        public void SaveRegularTransaction(TransactionModel transaction,string IDfrom ,string idTo)
+        {
+            string query = @" insert into [dbo].[Transactions]
+                              values ( (select top 1 a.ID
+                              from Accounts as a
+                              left join Users as u on a.UserID=u.ID
+                              where u.IDCardNumber= @idFrom),( select id from Accounts where IBAN = @idTo),
+                                    GETDATE(),@value,@transactionType,@VS,@SS,@CS,@message)";
+
+
+
+            try
+            {
+
+                using (SqlConnection connection = new SqlConnection(DbCons.CONNECTIONSTRING))
+                {
+                    try
+                    {
+                        connection.Open();
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.Add("@idFrom", SqlDbType.NVarChar).Value = IDfrom;
+                        command.Parameters.Add("@idTo", SqlDbType.NVarChar).Value = idTo;
+                        command.Parameters.Add("@value", SqlDbType.Money).Value = transaction.Value;
+                        command.Parameters.Add("@transactionType", SqlDbType.NVarChar).Value = transaction.Type;
+                        command.Parameters.Add("@VS", SqlDbType.NVarChar).Value = transaction.VariableSymbol;
+                        command.Parameters.Add("@SS", SqlDbType.NVarChar).Value = transaction.SpecificSymbol;
+                        command.Parameters.Add("@CS", SqlDbType.NVarChar).Value = transaction.ConstantSymbol;
+                        command.Parameters.Add("@message", SqlDbType.NVarChar).Value = transaction.Message;
+                        command.ExecuteNonQuery();
 
                     }
                     catch (Exception ex)
@@ -95,7 +199,116 @@ namespace Data.Repositories
                 Console.WriteLine("Error ocured while connecting " + e.Message);
 
             }
+        }
+        
+        public IEnumerable<TransactionModel> GetTransactionsByIDCard (string clientIdCard)
+        {
+            List<TransactionModel> transactions = new List<TransactionModel>();
+            string query = @"select t.*
+                             from(Transactions as t
+                             left join Accounts as a on t.IDFrom = a.ID or t.IDTo = a.ID)
+                             left join Users as u on a.UserID = u.ID
+                             where u.IDCardNumber = @clientIdCard";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DbCons.CONNECTIONSTRING))
+                {
+                    connection.Open();
 
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.Add("@clientIdCard", SqlDbType.NVarChar).Value = clientIdCard;
+
+                    try
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+
+                            while (reader.Read())
+                            {
+                                TransactionModel transaction = new TransactionModel();
+                                transaction.ID = reader.GetInt32(0);
+                                transaction.IDFrom = reader.GetInt32(1).ToString();
+                                transaction.IDTo = reader.GetInt32(2).ToString();
+                                transaction.Date = reader.GetDateTime(3);
+                                transaction.Value = reader.GetDecimal(4);
+                                transaction.Type = reader.GetString(5);
+                                transaction.VariableSymbol = reader.IsDBNull(6) ? "" : reader.GetString(6);
+                                transaction.SpecificSymbol = reader.IsDBNull(7) ? "" : reader.GetString(7);
+                                transaction.ConstantSymbol = reader.IsDBNull(8) ? "" : reader.GetString(8);
+                                transaction.Message = reader.IsDBNull(9) ? "" : reader.GetString(9);
+
+                                transactions.Add(transaction);
+
+                            }
+
+
+                        }
+                        return transactions;
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine($"Error happend during query \n {ex.Message}");
+                        return null;
+                    }
+
+
+                }
+            }
+
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error happend during connecting \n {e.Message}");
+                return null;
+            }
+        }
+
+        public void SaveTransactionDeposit(decimal value, string IDfrom)
+        {
+            string query = @" insert into[dbo].[Transactions]
+                              values((select top 1 a.ID
+                              from Accounts as a
+                              left join Users as u on a.UserID= u.ID
+                              where u.IDCardNumber= @IDfrom),(select top 1 a.ID
+                              from Accounts as a
+                              left join Users as u on a.UserID=u.ID
+                              where u.IDCardNumber= @IDfrom),getdate(),@value,'Deposit',null,null,null,null);
+
+                              update Accounts 
+                              set Balance= Balance+@value
+                              where Accounts.ID=(select top 1 a.ID 
+                              from Accounts as a
+                              left join Users as u on a.UserID=u.ID
+                              where  u.IDCardNumber= @IDfrom )";
+            Debug.WriteLine(value, IDfrom);
+
+
+            try
+            {
+
+                using (SqlConnection connection = new SqlConnection(DbCons.CONNECTIONSTRING))
+                {
+                    try
+                    {
+                        connection.Open();
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.Add("@IDfrom", SqlDbType.NVarChar).Value = IDfrom;                      
+                        command.Parameters.Add("@value", SqlDbType.Money).Value = value;
+               
+                        command.ExecuteNonQuery();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error ocured while quering " + ex.Message);
+
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error ocured while connecting " + e.Message);
+
+            }
         }
 
 
