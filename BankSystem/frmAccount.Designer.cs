@@ -41,7 +41,6 @@
             this.txtboxFirstName = new System.Windows.Forms.TextBox();
             this.txtBoxSurname = new System.Windows.Forms.TextBox();
             this.txtBoxIDCardNumber = new System.Windows.Forms.TextBox();
-            this.txtBoxPhoneNumber = new System.Windows.Forms.TextBox();
             this.txtBoxEmail = new System.Windows.Forms.TextBox();
             this.txtBoxStreetName = new System.Windows.Forms.TextBox();
             this.txtHomeNumber = new Controls.NumericTextBox();
@@ -55,6 +54,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.cmbBoxDebetLimit = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.txtBoxPhoneNumber = new Controls.NumericTextBox();
             this.SuspendLayout();
             // 
             // label3
@@ -106,7 +106,7 @@
             this.label7.Size = new System.Drawing.Size(62, 24);
             this.label7.TabIndex = 6;
             this.label7.Text = "Email:";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
+
             // 
             // label8
             // 
@@ -164,7 +164,7 @@
             this.txtboxFirstName.Name = "txtboxFirstName";
             this.txtboxFirstName.Size = new System.Drawing.Size(242, 20);
             this.txtboxFirstName.TabIndex = 12;
-            this.txtboxFirstName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+
             // 
             // txtBoxSurname
             // 
@@ -179,13 +179,6 @@
             this.txtBoxIDCardNumber.Name = "txtBoxIDCardNumber";
             this.txtBoxIDCardNumber.Size = new System.Drawing.Size(242, 20);
             this.txtBoxIDCardNumber.TabIndex = 14;
-            // 
-            // txtBoxPhoneNumber
-            // 
-            this.txtBoxPhoneNumber.Location = new System.Drawing.Point(187, 168);
-            this.txtBoxPhoneNumber.Name = "txtBoxPhoneNumber";
-            this.txtBoxPhoneNumber.Size = new System.Drawing.Size(242, 20);
-            this.txtBoxPhoneNumber.TabIndex = 15;
             // 
             // txtBoxEmail
             // 
@@ -307,11 +300,19 @@
             this.label14.TabIndex = 28;
             this.label14.Text = "€";
             // 
+            // txtBoxPhoneNumber
+            // 
+            this.txtBoxPhoneNumber.Location = new System.Drawing.Point(187, 163);
+            this.txtBoxPhoneNumber.Name = "txtBoxPhoneNumber";
+            this.txtBoxPhoneNumber.Size = new System.Drawing.Size(242, 20);
+            this.txtBoxPhoneNumber.TabIndex = 29;
+            // 
             // frmAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(455, 617);
+            this.Controls.Add(this.txtBoxPhoneNumber);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.cmbBoxDebetLimit);
             this.Controls.Add(this.label13);
@@ -325,7 +326,6 @@
             this.Controls.Add(this.txtHomeNumber);
             this.Controls.Add(this.txtBoxStreetName);
             this.Controls.Add(this.txtBoxEmail);
-            this.Controls.Add(this.txtBoxPhoneNumber);
             this.Controls.Add(this.txtBoxIDCardNumber);
             this.Controls.Add(this.txtBoxSurname);
             this.Controls.Add(this.txtboxFirstName);
@@ -361,7 +361,6 @@
         private System.Windows.Forms.TextBox txtboxFirstName;
         private System.Windows.Forms.TextBox txtBoxSurname;
         private System.Windows.Forms.TextBox txtBoxIDCardNumber;
-        private System.Windows.Forms.TextBox txtBoxPhoneNumber;
         private System.Windows.Forms.TextBox txtBoxEmail;
         private System.Windows.Forms.TextBox txtBoxStreetName;
         private Controls.NumericTextBox txtHomeNumber;
@@ -375,5 +374,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox cmbBoxDebetLimit;
         private System.Windows.Forms.Label label14;
+        private Controls.NumericTextBox txtBoxPhoneNumber;
     }
 }

@@ -9,10 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BankSystem
-{
+{/// <summary>
+/// this form is here for looking at accounts data and to filter them
+/// </summary>
     public partial class frmAccounts : Form
     {
+        /// <summary>
+        /// we need logic here as alaways
+        /// </summary>
         private BSLogic _logic;
+        /// <summary>
+        /// constructor
+        /// datagridview filled with datasource from logic
+        /// </summary>
+        /// <param name="logic"></param>
         public frmAccounts(BSLogic logic)
         {
             InitializeComponent();
@@ -21,6 +31,12 @@ namespace BankSystem
             dGVAccounts.DataMember = "AccountsWithNames";
         }
 
+        /// <summary>
+        /// jumps into client manager form
+        /// with the selected index
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdManageAccount_Click(object sender, EventArgs e)
         {
             frmClientManagement manager = new frmClientManagement(_logic.GetIdCardByIban
@@ -28,21 +44,13 @@ namespace BankSystem
             manager.ShowDialog();
         }
 
-        private void frmAccounts_Load(object sender, EventArgs e)
-        {
+    
 
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// button for filtering result based on which radiobtton is checked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             if (radioButtonIban.Checked)
@@ -62,9 +70,6 @@ namespace BankSystem
             }
         }
 
-        private void dGVAccounts_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+       
     }
 }

@@ -9,6 +9,11 @@ namespace Data.Repositories
 {
    public  class AddressRepository 
     {
+        /// <summary>
+        /// Method for creating new address and adding it to the databse
+        /// </summary>
+        /// <param name="address"></param>
+        /// <returns></returns>
         public int CreateAddress(AddressModel address)
         {
             string query = @"insert into [dbo].[Addreses] values (@StreetName,@HomeNumber,@City,@PostalCode)";
@@ -23,6 +28,7 @@ namespace Data.Repositories
                         using (SqlCommand command = connection.CreateCommand())
                         {
                             command.CommandText = query;
+                            
                             command.Parameters.Add("@StreetName", SqlDbType.VarChar).Value = address.StreetName;
                             command.Parameters.Add("@HomeNumber", SqlDbType.Int).Value = address.HomeNumber;
                             command.Parameters.Add("@City", SqlDbType.VarChar).Value = address.City;
@@ -54,7 +60,10 @@ namespace Data.Repositories
             }
 
         }
-
+        /// <summary>
+        /// method for updataing address 
+        /// </summary>
+        /// <param name="address"></param>
         public void UpdateAddress(AddressModel address)
         {
             string query = @"UPDATE Addreses

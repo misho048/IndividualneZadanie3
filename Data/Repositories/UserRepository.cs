@@ -8,9 +8,20 @@ using System.Diagnostics;
 
 namespace Data.Repositories
 {
-    public class UserRepository { 
+    public class UserRepository {
+        /// <summary>
+        /// saves Last ID
+        /// used to save to database
+        /// </summary>
         private int _lastID;
 
+        /// <summary>
+        /// Create new User and saves it to the database
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="addressRep"></param>
+        /// <param name="addressMod"></param>
+        /// <returns></returns>
         public int CreateUser(UserModel user, AddressRepository addressRep, AddressModel addressMod)
         {
             string query = @"insert into [dbo].[Users] values (@FirstName,@LastName,@IDCard,@PhoneNumber,@Email,@IDAddress)";
@@ -58,14 +69,27 @@ namespace Data.Repositories
 
         }
 
+        /// <summary>
+        /// send last used ID to the Logic
+        /// </summary>
+        /// <returns></returns>
         public int GetLastID()
         {
             return _lastID;
         }
 
+        /// <summary>
+        /// returns User list filtered by IDcard
+        /// </summary>
+        /// <param name="filterBy"></param>
+        /// <returns></returns>
         public  IEnumerable<UserModel> GetUsersByIDCardList (string filterBy)
             {
-            string query = @"select * from users where IDCardNumber like @filter";
+            string query = @"select distinct u.* 
+                             from users as u 
+                             left join Accounts as a on u.ID=a.UserID
+                             where u.IDCardNumber like @filter and isnull(a.CloseDate,'1900-05-05')='1900-05-05'";
+
             filterBy = $"%{filterBy}%";
             List<UserModel> filteredUsers = new List<UserModel>();
             try
@@ -122,7 +146,13 @@ namespace Data.Repositories
 
 
         }
-        
+
+        /// <summary>
+        /// Loads data from database about user his address and account and sends them to the app
+        /// for upadate purposes
+        /// </summary>
+        /// <param name="idCard"></param>
+        /// <returns></returns>
         public string[] GetDataForUpdate (string idCard)
         {
             string query = @"select top 1 u.*,ad.*,a.IBAN,a.DebtLimit
@@ -176,6 +206,10 @@ namespace Data.Repositories
 
         }
 
+        /// <summary>
+        /// get usermodel from app and saves it to the database
+        /// </summary>
+        /// <param name="user"></param>
         public void UpdateUser(UserModel user)
         {
             string query = @"update Users

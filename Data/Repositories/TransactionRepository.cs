@@ -7,9 +7,16 @@ using System.Diagnostics;
 
 
 namespace Data.Repositories
-{
+{/// <summary>
+/// class to work with transaction model 
+/// </summary>
     public class TransactionRepository 
     {
+        /// <summary>
+        /// reads all transactions from database and saves them to IEnumerable 
+        /// then returns it
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<TransactionModel> GetTransactions()  {
             List<TransactionModel> transactions = new List<TransactionModel>();
             try
@@ -65,6 +72,11 @@ namespace Data.Repositories
             }
         }
 
+        /// <summary>
+        /// saves Withdraw transaction 
+        /// </summary>
+        /// <param name="idFrom"></param>
+        /// <param name="value"></param>
         public void SaveTransactionWithdraw(int idFrom, decimal value)
         {
             string query = @"insert into [dbo].[Transactions] 
@@ -156,6 +168,12 @@ namespace Data.Repositories
 
         }
 
+        /// <summary>
+        /// makes regular transaction between two accoounts
+        /// </summary>
+        /// <param name="transaction"></param>
+        /// <param name="IDfrom"></param>
+        /// <param name="idTo"></param>
         public void SaveRegularTransaction(TransactionModel transaction,string IDfrom ,string idTo)
         {
             string query = @" insert into [dbo].[Transactions]
@@ -163,7 +181,18 @@ namespace Data.Repositories
                               from Accounts as a
                               left join Users as u on a.UserID=u.ID
                               where u.IDCardNumber= @idFrom),( select id from Accounts where IBAN = @idTo),
-                                    GETDATE(),@value,@transactionType,@VS,@SS,@CS,@message)";
+                                    GETDATE(),@value,@transactionType,@VS,@SS,@CS,@message)
+
+                              update Accounts 
+                              set Balance = Balance+@value 
+                              where ID=( select id from Accounts where IBAN = @idTo)
+
+                              update Accounts
+                              set Balance= Balance-@value
+                              where ID=(select top 1 a.ID
+                              from Accounts as a
+                              left join Users as u on a.UserID=u.ID
+                              where u.IDCardNumber= @idFrom)";
 
 
 
@@ -201,6 +230,11 @@ namespace Data.Repositories
             }
         }
         
+        /// <summary>
+        /// returns all transaction by a single user based on his ID card
+        /// </summary>
+        /// <param name="clientIdCard"></param>
+        /// <returns></returns>
         public IEnumerable<TransactionModel> GetTransactionsByIDCard (string clientIdCard)
         {
             List<TransactionModel> transactions = new List<TransactionModel>();
@@ -262,6 +296,13 @@ namespace Data.Repositories
             }
         }
 
+        /// <summary>
+        /// makes deposit transaction
+        /// insert new transaction into transactions in database
+        /// and update the accounts 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="IDfrom"></param>
         public void SaveTransactionDeposit(decimal value, string IDfrom)
         {
             string query = @" insert into[dbo].[Transactions]
@@ -310,6 +351,8 @@ namespace Data.Repositories
 
             }
         }
+
+       
 
 
     }

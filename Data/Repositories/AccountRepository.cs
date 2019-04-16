@@ -12,8 +12,55 @@ namespace Data.Repositories
 {
     public class AccountRepository 
     {
-       
+       /// <summary>
+       /// Get all posiibl money you can withdraw including debt       /// 
+       /// </summary>
+       /// <param name="clientIdCard"></param>
+       /// <returns></returns>
+        public decimal GetAssetsByClientIdCard (string clientIdCard)
+        {
+            string query = @" select top 1  a.Balance + a.DebtLimit as 'Avaliable Assets'
+                                from Accounts as a
+                                left join Users as u on a.UserID=u.ID
+                                where u.IDCardNumber=@ClientIdCard";
 
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DbCons.CONNECTIONSTRING))
+                {
+                    connection.Open();
+                    try
+                    {
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.Add("@ClientIdCard", SqlDbType.NVarChar).Value = clientIdCard;
+
+                        return Convert.ToDecimal(command.ExecuteScalar());
+
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine($"Error happend during query \n {ex.Message}");
+                        return 0;
+                    }
+
+
+                }
+            }
+
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error happend during connecting \n {e.Message}");
+                return 0;
+            }
+
+        }
+        /// <summary>
+        /// Method which return Balance of the account based by Client ID Card
+        /// </summary>
+        /// <param name="clientIdCard"></param>
+        /// <returns></returns>
         public decimal GetBalanceByClientIdCard(string clientIdCard)
         {
             string query = @" select top 1 a.Balance 
@@ -55,6 +102,57 @@ namespace Data.Repositories
 
         }
 
+        /// <summary>
+        /// Method which return Balance of the account based by Client Credit Card
+        /// </summary>
+        /// <param name="clientIdCard"></param>
+        /// <returns></returns>
+        public decimal GetAssetsByCreditCard(string creditCard)
+        {
+            string query = @" select  a.Balance + a.DebtLimit as 'Avaliable Assets'
+                                from Accounts as a
+                                left join Cards as c on a.ID=c.Account_ID
+                                where c.CardNumber=@creditCard";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DbCons.CONNECTIONSTRING))
+                {
+                    connection.Open();
+                    try
+                    {
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.Add("@creditCard", SqlDbType.NVarChar).Value = creditCard;
+
+                        return Convert.ToDecimal(command.ExecuteScalar());
+
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine($"Error happend during query \n {ex.Message}");
+                        return 0;
+                    }
+
+
+                }
+            }
+
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error happend during connecting \n {e.Message}");
+                return 0;
+            }
+
+
+        }
+
+        /// <summary>
+        /// Method which return object of single accountmodel based by Client ID Card
+        /// </summary>
+        /// <param name="cardNumber"></param>
+        /// <returns></returns>
         public AccountsModel GetAccountsByCard(string cardNumber)
         {
             string query = @"select a.*
@@ -113,6 +211,12 @@ namespace Data.Repositories
             }
         }
 
+        /// <summary>
+        /// Method for getting Owner FIrst and Last Name based on his
+        /// Credit card number
+        /// </summary>
+        /// <param name="cardNumber"></param>
+        /// <returns></returns>
         public string GetAccountOwnerName(string cardNumber)
         {
             string query = @"select (u.FirstName+' '+u.LastName) as FullName
@@ -141,6 +245,11 @@ namespace Data.Repositories
             }
         }
 
+        /// <summary>
+        /// Method for returning ID of the account based on the credit card Number
+        /// </summary>
+        /// <param name="cardNumber"></param>
+        /// <returns></returns>
         public int SelectAccountIDByCard(string cardNumber)
         {
             string query = @"select  a.ID 
@@ -165,8 +274,12 @@ namespace Data.Repositories
                 return 0;
             }
 
-        }     
+        }
 
+        /// <summary>
+        /// Method for creating new Account and saving it to the database
+        /// </summary>
+        /// <param name="acc"></param>
         public void CreateNewAccount(AccountsModel acc)
         {
             string query = @"insert into Accounts 
@@ -204,9 +317,14 @@ namespace Data.Repositories
             }
         }
         
+        /// <summary>
+        /// Method returns Dataset with Account Information together
+        /// with account holder Name and surname
+        /// </summary>
+        /// <returns></returns>
         public DataSet FillDataSet()
         {
-            string query = @"select a.IBAN,a.Balance,a.DebtLimit,u.LastName,u.FirstName
+            string query = @"select distinct a.IBAN,a.Balance,a.DebtLimit,u.LastName,u.FirstName
                              from Accounts as a
                              left join Users as u on a.UserID = u.ID";
             DataSet ds = new DataSet();
@@ -222,6 +340,13 @@ namespace Data.Repositories
             return ds;
         }
 
+        /// <summary>
+        /// Method returns Dataset with Account Information together
+        /// with account holder Name and surname based on filter
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <param name="filterWord"></param>
+        /// <returns></returns>
         public DataSet FilterDataAccounts(string filter, string filterWord)
         {
             string query = $@"select a.IBAN,a.Balance,a.DebtLimit,u.LastName,u.FirstName
@@ -246,6 +371,12 @@ namespace Data.Repositories
             return ds;
         }
 
+        /// <summary>
+        /// Method return Iban of the account based on
+        /// id of the account
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public string GetIbanByID(int id)
         {
             string query = @" select IBAN from Accounts where id=@id";
@@ -270,6 +401,10 @@ namespace Data.Repositories
             }
         }
 
+        /// <summary>
+        /// Method for closing the account
+        /// </summary>
+        /// <param name="cardNumber"></param>
         public void CloseAccount(string cardNumber)
         {
             string query = @"Update accounts 
@@ -308,6 +443,10 @@ namespace Data.Repositories
 
         }
 
+        /// <summary>
+        /// method for updating information in the account
+        /// </summary>
+        /// <param name="account"></param>
         public void UpdateAccount(AccountsModel account)
         {
             string query = @"update Accounts
@@ -346,6 +485,11 @@ namespace Data.Repositories
             }
         }
 
+        /// <summary>
+        /// method to get User Id Card number by Iban of his account
+        /// </summary>
+        /// <param name="iban"></param>
+        /// <returns></returns>
         public string GetUserCardIdbyIban(string iban)
         {
             string query = @"select top 1 u.IDCardNumber 
@@ -373,6 +517,69 @@ namespace Data.Repositories
                 return null;
             }
 
+        }
+
+        /// <summary>
+        /// Checks if its possible to make a withdrawal
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="creditCardNUmber"></param>
+        /// <returns></returns>
+        public bool IsPossibleCreditCard(decimal value,string creditCardNUmber)
+        {
+            if (GetAssetsByCreditCard(creditCardNUmber) > value)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// returns list with all Ibans
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetAllIbans()
+        {
+            List<string> ibanList = new List<string>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DbCons.CONNECTIONSTRING))
+                {
+                    connection.Open();
+
+                    SqlCommand command = new SqlCommand("select IBAN from Accounts", connection);
+
+                    try
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                ibanList.Add(reader.GetString(0));                               
+                            }
+
+
+                        }
+                        return ibanList;
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine($"Error happend during query \n {ex.Message}");
+                        return null;
+                    }
+
+
+                }
+            }
+
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error happend during connecting \n {e.Message}");
+                return null;
+            }
         }
     }
 }

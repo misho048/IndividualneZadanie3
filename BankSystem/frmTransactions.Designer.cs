@@ -46,7 +46,7 @@
             this.dGVTransactions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGVTransactions.Size = new System.Drawing.Size(829, 348);
             this.dGVTransactions.TabIndex = 0;
-            this.dGVTransactions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGVTransactions_CellContentClick);
+
             // 
             // frmTransactions
             // 

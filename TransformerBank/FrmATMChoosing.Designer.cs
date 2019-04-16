@@ -89,7 +89,7 @@
             this.label2.Size = new System.Drawing.Size(273, 37);
             this.label2.TabIndex = 0;
             this.label2.Text = "Account Balance";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+        
             // 
             // btnBalance
             // 
@@ -143,6 +143,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "FrmATMChoosing";
             this.Text = "FrmATMChoosing";
+         
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

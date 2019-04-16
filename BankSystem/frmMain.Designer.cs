@@ -34,7 +34,7 @@
             this.cmdAllTransactions = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dGVManagerOverview = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonClose = new System.Windows.Forms.Button();
             this.buttonTopClients = new System.Windows.Forms.Button();
             this.buttonBankAssets = new System.Windows.Forms.Button();
             this.buttonNumberAccounts = new System.Windows.Forms.Button();
@@ -91,9 +91,6 @@
             this.comboBox1.Size = new System.Drawing.Size(227, 21);
             this.comboBox1.TabIndex = 10;
             this.comboBox1.DropDown += new System.EventHandler(this.comboBox1_DropDown);
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            this.comboBox1.TextUpdate += new System.EventHandler(this.comboBox1_TextUpdate);
-            this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
             // 
             // dGVManagerOverview
             // 
@@ -108,15 +105,15 @@
             this.dGVManagerOverview.Size = new System.Drawing.Size(280, 344);
             this.dGVManagerOverview.TabIndex = 11;
             // 
-            // button1
+            // buttonClose
             // 
-            this.button1.Location = new System.Drawing.Point(510, 294);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Close";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.buttonClose.Location = new System.Drawing.Point(510, 294);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(112, 23);
+            this.buttonClose.TabIndex = 12;
+            this.buttonClose.Text = "Close";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // buttonTopClients
             // 
@@ -178,7 +175,7 @@
             this.Controls.Add(this.buttonNumberAccounts);
             this.Controls.Add(this.buttonBankAssets);
             this.Controls.Add(this.buttonTopClients);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.dGVManagerOverview);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.cmdAllTransactions);
@@ -201,7 +198,7 @@
         private System.Windows.Forms.Button cmdAllTransactions;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridView dGVManagerOverview;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Button buttonTopClients;
         private System.Windows.Forms.Button buttonBankAssets;
         private System.Windows.Forms.Button buttonNumberAccounts;

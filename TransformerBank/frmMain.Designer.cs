@@ -47,6 +47,7 @@
             // 
             this.numericTxtBoxPin.Location = new System.Drawing.Point(141, 83);
             this.numericTxtBoxPin.Name = "numericTxtBoxPin";
+            this.numericTxtBoxPin.PasswordChar = '*';
             this.numericTxtBoxPin.Size = new System.Drawing.Size(188, 20);
             this.numericTxtBoxPin.TabIndex = 1;
             // 

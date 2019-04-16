@@ -9,13 +9,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BankSystem
-{
+{/// <summary>
+/// Form to create new credit card or to change pincode
+/// </summary>
     public partial class frmNewCreditcard : Form
     {
+        /// <summary>
+        /// logic is used here with client card information
+        /// is new  is identificator if we are creating new card or changing pincode to old one
+        /// </summary>
         private  BSLogic _logic;
         private string _clientCardID;
         private bool _isNew;
-        
+       
+        /// <summary>
+        /// construcotr
+        /// label text is generated if is new or is copyied if id old
+        /// </summary>
+        /// <param name="logic"></param>
+        /// <param name="clientCardID"></param>
+        /// <param name="isNew"></param>
         public frmNewCreditcard(BSLogic logic, string clientCardID,bool isNew)
         {
             _isNew = isNew;
@@ -32,12 +45,23 @@ namespace BankSystem
             }
             }
 
+        /// <summary>
+        /// cancel byutton leaves the form without saving changes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
 
         }
 
+        /// <summary>
+        /// confirm leaving the form and creating / chaging pin based on _isNew value
+        /// and also checks the pin
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             if ((numericTextBoxPin.Text.Equals(numericTextBoxPinConfirm.Text)) && numericTextBoxPin.Text.Length.Equals(4))

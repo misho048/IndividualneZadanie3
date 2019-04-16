@@ -3,12 +3,18 @@
 using System.Windows.Forms;
 
 namespace TransformerBank
-{
+{/// <summary>
+/// this class is for Bank Note withdrawal in ATM
+/// </summary>
     public partial class ATMwithdrawSelect : Form
     {
+        /// <summary>
+        /// we using ATMlogic here, cardnumber
+        /// and onther variables are to save amount of bank notes to withdraw
+        /// </summary>
         private string _cardNumber;
         private ATMLogic _logic;
-        private int note5=0;
+        private int note5 = 0;
         private int note10 = 0;
         private int note20 = 0;
         private int note50 = 0;
@@ -17,27 +23,53 @@ namespace TransformerBank
 
 
 
-
-        public ATMwithdrawSelect(string cardNumber,ATMLogic logic)
+        /// <summary>
+        /// contructor
+        /// </summary>
+        /// <param name="cardNumber"></param>
+        /// <param name="logic"></param>
+        public ATMwithdrawSelect(string cardNumber, ATMLogic logic)
         {
             _cardNumber = cardNumber;
             _logic = logic;
             InitializeComponent();
         }
-
+        /// <summary>
+        /// end current form with a cancel dialog
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btncancel_Click(object sender, EventArgs e)
         {
 
             DialogResult = DialogResult.Cancel;
         }
 
+        /// <summary>
+        /// makes the withdraw (if possible )
+        /// count the value 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             decimal value = note5 * 5 + note10 * 10 + note20 * 20 + note50 * 50 + note100 * 100 + note500 * 500;
-            _logic.AddWithdrawTransaction(value, _cardNumber);
+            if (
+            _logic.AddWithdrawTransaction(value, _cardNumber))
+            {
 
-            DialogResult = DialogResult.OK;
+                DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Not enough funds");
+            }
         }
+
+
+        /// <summary>
+        /// all nbext methods just save the value and draw number of counts on themselfs
+        /// </summary>
 
         private void btn5_Click(object sender, EventArgs e)
         {

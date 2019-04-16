@@ -141,7 +141,7 @@
             this.Controls.Add(this.labelIBAN);
             this.Name = "ATMBalance";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.ATMBalance_Load);
+            
             this.ResumeLayout(false);
             this.PerformLayout();
 

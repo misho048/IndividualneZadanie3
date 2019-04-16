@@ -39,7 +39,7 @@
             this.labelSS = new System.Windows.Forms.Label();
             this.labelCS = new System.Windows.Forms.Label();
             this.labelMessage = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
             this.textBoxIban = new System.Windows.Forms.TextBox();
             this.textBoxVS = new System.Windows.Forms.TextBox();
             this.textBoxSS = new System.Windows.Forms.TextBox();
@@ -53,7 +53,7 @@
             this.numericTextBoxValue.Name = "numericTextBoxValue";
             this.numericTextBoxValue.Size = new System.Drawing.Size(165, 20);
             this.numericTextBoxValue.TabIndex = 0;
-            this.numericTextBoxValue.TextChanged += new System.EventHandler(this.numericTextBoxValue_TextChanged);
+
             // 
             // label1
             // 
@@ -165,16 +165,16 @@
             this.labelMessage.TabIndex = 10;
             this.labelMessage.Text = "Message for Moron:";
             // 
-            // button2
+            // buttonCancel
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button2.Location = new System.Drawing.Point(16, 289);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 35);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonCancel.Location = new System.Drawing.Point(16, 289);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(150, 35);
+            this.buttonCancel.TabIndex = 11;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBoxIban
             // 
@@ -226,7 +226,7 @@
             this.Controls.Add(this.textBoxSS);
             this.Controls.Add(this.textBoxVS);
             this.Controls.Add(this.textBoxIban);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.labelMessage);
             this.Controls.Add(this.labelCS);
             this.Controls.Add(this.labelSS);
@@ -238,7 +238,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numericTextBoxValue);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmTransaction";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmTransaction";
@@ -260,7 +260,7 @@
         private System.Windows.Forms.Label labelSS;
         private System.Windows.Forms.Label labelCS;
         private System.Windows.Forms.Label labelMessage;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.TextBox textBoxIban;
         private System.Windows.Forms.TextBox textBoxVS;
         private System.Windows.Forms.TextBox textBoxSS;

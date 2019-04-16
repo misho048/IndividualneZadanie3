@@ -307,6 +307,7 @@
             this.buttonBlockUnblock.TabIndex = 38;
             this.buttonBlockUnblock.Text = "Block/Unblock Card";
             this.buttonBlockUnblock.UseVisualStyleBackColor = true;
+            this.buttonBlockUnblock.Click += new System.EventHandler(this.buttonBlockUnblock_Click);
             // 
             // frmClientManagement
             // 
@@ -341,8 +342,7 @@
             this.Controls.Add(this.cmdUpdate);
             this.Name = "frmClientManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmClientManagement";
-            this.Load += new System.EventHandler(this.frmClientManagement_Load);
+            this.Text = "frmClientManagement";           
             ((System.ComponentModel.ISupportInitialize)(this.dGVCreditcards)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -10,20 +10,33 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BankSystem
-{
+{/// <summary>
+/// form for creating and editing USer informations with some 
+/// debtlimit
+/// </summary>
     public partial class frmAccount : Form
     {
+        /// <summary>
+        /// fields logic, clientIDCard
+        /// isUpdate shows if we are creating new user or updating old one
+        /// if we are updating we aleso need old data to show
+        /// </summary>
         private BSLogic _logic;
         private string _clientIdCard;
         private bool _isUpdate;
         private string[] _dataToShow;
 
+        /// <summary>
+        /// contructior for updating
+        /// </summary>
+        /// <param name="logic"></param>
+        /// <param name="clientIdCard"></param>
         public frmAccount(BSLogic logic, string clientIdCard)
         {
             _logic = logic;
             InitializeComponent();
             _clientIdCard = clientIdCard;
-            readyForUpdate();
+            ReadyForUpdate();
             _isUpdate = true;
             
             
@@ -48,16 +61,24 @@ namespace BankSystem
             InitializeComponent();
         }
 
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
+     
+        /// <summary>
+        /// cancel button no changes saved
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void button2_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
         }
 
+        /// <summary>
+        /// saves data in textboxes to the field
+        /// and call update/create user method from logic
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             if (_isUpdate) {
@@ -85,7 +106,11 @@ namespace BankSystem
             DialogResult = DialogResult.OK;
         }
 
-        private void readyForUpdate()
+        /// <summary>
+        /// loads some data into textboxes
+        /// so we can see old data while updating 
+        /// </summary>
+        private void ReadyForUpdate()
         {
              _dataToShow= _logic.GetDataToUpdate(_clientIdCard);
             txtboxFirstName.Text = _dataToShow[1];
@@ -102,9 +127,6 @@ namespace BankSystem
         }
 
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
+     
     }
 }

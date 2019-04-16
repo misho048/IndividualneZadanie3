@@ -10,9 +10,14 @@ using System.Windows.Forms;
 
 namespace BankSystem
 {
+    /// <summary>
+    /// form to manage clients
+    /// </summary>
     public partial class frmClientManagement : Form
     {
-
+        /// <summary>
+        /// we need logic here and client id card information from previous forms
+        /// </summary>
         private BSLogic _logic;
         private string _clientIdCard;
 
@@ -31,7 +36,11 @@ namespace BankSystem
         }
 
       
-
+/// <summary>
+/// goes into update form and updates user info
+/// </summary>
+/// <param name="sender"></param>
+/// <param name="e"></param>
         private void cmdUpdate_Click(object sender, EventArgs e)
         {
             using (frmAccount newForm = new frmAccount(_logic,_clientIdCard))
@@ -40,6 +49,9 @@ namespace BankSystem
             }
             FillOverview();
         }
+        /// <summary>
+        /// fill data grid view  and hide / edit unneccesary data
+        /// </summary>
 
         private void FillCreditCardGridView()
         {
@@ -51,6 +63,10 @@ namespace BankSystem
             dGVCreditcards.ReadOnly = true;
             dGVCreditcards.MultiSelect = false;
         }
+
+        /// <summary>
+        /// fill user overview
+        /// </summary>
 
         private void FillOverview() {
             textBoxName.Text = _logic.GetDataToUpdate(_clientIdCard)[1];
@@ -64,6 +80,12 @@ namespace BankSystem
             textBoxDebtLimit.Text = _logic.GetDataToUpdate(_clientIdCard)[13];
         }       
 
+        /// <summary>
+        /// shows new form with all transactions
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private void cmdAllTransactions_Click(object sender, EventArgs e)
         {
             using (frmTransactions newForm = new frmTransactions(_logic,_clientIdCard))
@@ -72,6 +94,11 @@ namespace BankSystem
             }
         }
 
+        /// <summary>
+        /// open form where we are creating a new transaction
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdNewTransaction_Click(object sender, EventArgs e)
         {
             using (frmTransaction newForm = new frmTransaction(_logic,_clientIdCard))
@@ -81,22 +108,34 @@ namespace BankSystem
             FillOverview();
         }
 
+        /// <summary>
+        /// chcecks if its possible and if yes then close account
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdCloseAccount_Click(object sender, EventArgs e)
         {
             
 
             if (MessageBox.Show("Do you really want to close this account?", "Account Closing", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                if (_logic.CloseAccount(_clientIdCard))
+                if (_logic.CloseAccount(_clientIdCard) && !_logic.IsThereAnyCards(_clientIdCard))
                 {
                     DialogResult = DialogResult.OK;
                 }
                 else
                 {
-                    MessageBox.Show("Your balance needs to be at 0 if you want to close account!!");
+                    MessageBox.Show("Your balance needs to be at 0 if you want to close account, and you cant have any active credit cards!!");
+                    
                 }
                 }
         }
+
+        /// <summary>
+        /// create form for a new creditcrad
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void buttonNewCreditCard_Click(object sender, EventArgs e)
         {
@@ -109,6 +148,12 @@ namespace BankSystem
 
         }
 
+        /// <summary>
+        /// send us to the form to change pin to a credit card
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private void buttonChangePin_Click(object sender, EventArgs e)
         {
             frmNewCreditcard newCreditcard = new frmNewCreditcard(_logic, dGVCreditcards.SelectedRows[0].Cells[3].Value.ToString(), false);
@@ -116,9 +161,18 @@ namespace BankSystem
             
         }
 
-        private void frmClientManagement_Load(object sender, EventArgs e)
+        /// <summary>
+        /// button to block/unblock credit card
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        private void buttonBlockUnblock_Click(object sender, EventArgs e)
         {
 
+           _logic.BlockUnblockCard(dGVCreditcards.SelectedRows[0].Cells[3].Value.ToString());
+            FillCreditCardGridView();
         }
     }
 }

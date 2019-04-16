@@ -63,7 +63,7 @@
             this.dGVAccounts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGVAccounts.Size = new System.Drawing.Size(890, 312);
             this.dGVAccounts.TabIndex = 11;
-            this.dGVAccounts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGVAccounts_CellContentClick);
+
             // 
             // textBoxFilter
             // 
@@ -81,7 +81,6 @@
             this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 13;
             this.label1.Text = "First Name";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -130,7 +129,6 @@
             this.radioButtonFirstName.TabIndex = 20;
             this.radioButtonFirstName.TabStop = true;
             this.radioButtonFirstName.UseVisualStyleBackColor = true;
-            this.radioButtonFirstName.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
             // label4
             // 
@@ -159,7 +157,6 @@
             this.Name = "frmAccounts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmClients";
-            this.Load += new System.EventHandler(this.frmAccounts_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dGVAccounts)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

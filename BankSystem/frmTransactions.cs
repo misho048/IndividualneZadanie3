@@ -11,13 +11,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BankSystem
-{
+{/// <summary>
+/// form to look at all transactions
+/// </summary>
     public partial class frmTransactions : Form
-    {
+    {/// <summary>
+    /// using logic here
+    /// *this is not a church xD*
+    /// </summary>
         BSLogic _logic;
-        /// <summary>
-        /// Used when viewing all transactions.
-        /// </summary>
+    /// <summary>
+    /// constructor
+    /// initialiying components and filling datagridview
+    /// hiding and editing unnecessary data 
+    /// </summary>
+    /// <param name="logic"></param>
         public frmTransactions(BSLogic logic)
         {
             InitializeComponent();
@@ -41,6 +49,13 @@ namespace BankSystem
 
         }
 
+        /// <summary>
+        /// this construcotr is called when we want to see all transactions done by User
+        /// also hiding and editing unnecessary data
+        /// </summary>
+        /// <param name="logic"></param>
+        /// <param name="clientIdCard"></param>
+
         public frmTransactions(BSLogic logic,string clientIdCard)
         {
             InitializeComponent();
@@ -58,29 +73,11 @@ namespace BankSystem
                     _logic.GetIbanbyAccountID(Convert.ToInt32(Item.Cells[2].Value));
             }
 
-            //foreach (var item in dGVTransactions.Columns[2].Rows)
-            //{
-
-            //}
-            
-           // dGVTransactions.Columns[0].Visible = false;
+           
 
         }
+                        
 
-
-
-        /// <summary>
-        /// Used when viewing selected client's transactions.
-        /// </summary>
-        /// <param name="clientId"></param>
-        public frmTransactions(int clientId)
-        {
-            InitializeComponent();
-        }
-
-        private void dGVTransactions_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+     
     }
 }
