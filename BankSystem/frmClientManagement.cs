@@ -174,5 +174,10 @@ namespace BankSystem
            _logic.BlockUnblockCard(dGVCreditcards.SelectedRows[0].Cells[3].Value.ToString());
             FillCreditCardGridView();
         }
+
+        private void textBoxDebtLimit_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

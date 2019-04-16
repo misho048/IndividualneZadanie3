@@ -55,6 +55,7 @@
             this.cmbBoxDebetLimit = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtBoxPhoneNumber = new Controls.NumericTextBox();
+            this.label1ibangen = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label3
@@ -106,7 +107,6 @@
             this.label7.Size = new System.Drawing.Size(62, 24);
             this.label7.TabIndex = 6;
             this.label7.Text = "Email:";
-
             // 
             // label8
             // 
@@ -164,7 +164,6 @@
             this.txtboxFirstName.Name = "txtboxFirstName";
             this.txtboxFirstName.Size = new System.Drawing.Size(242, 20);
             this.txtboxFirstName.TabIndex = 12;
-
             // 
             // txtBoxSurname
             // 
@@ -307,11 +306,22 @@
             this.txtBoxPhoneNumber.Size = new System.Drawing.Size(242, 20);
             this.txtBoxPhoneNumber.TabIndex = 29;
             // 
+            // label1ibangen
+            // 
+            this.label1ibangen.AutoSize = true;
+            this.label1ibangen.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1ibangen.Location = new System.Drawing.Point(183, 462);
+            this.label1ibangen.Name = "label1ibangen";
+            this.label1ibangen.Size = new System.Drawing.Size(58, 24);
+            this.label1ibangen.TabIndex = 30;
+            this.label1ibangen.Text = "IBAN:";
+            // 
             // frmAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(455, 617);
+            this.Controls.Add(this.label1ibangen);
             this.Controls.Add(this.txtBoxPhoneNumber);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.cmbBoxDebetLimit);
@@ -342,6 +352,7 @@
             this.Name = "frmAccount";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmAccount";
+            this.Load += new System.EventHandler(this.frmAccount_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -375,5 +386,6 @@
         private System.Windows.Forms.ComboBox cmbBoxDebetLimit;
         private System.Windows.Forms.Label label14;
         private Controls.NumericTextBox txtBoxPhoneNumber;
+        private System.Windows.Forms.Label label1ibangen;
     }
 }

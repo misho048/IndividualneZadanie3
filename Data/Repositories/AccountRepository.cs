@@ -13,7 +13,7 @@ namespace Data.Repositories
     public class AccountRepository 
     {
        /// <summary>
-       /// Get all posiibl money you can withdraw including debt       /// 
+       /// Get all posiibl money you can withdraw including debt       
        /// </summary>
        /// <param name="clientIdCard"></param>
        /// <returns></returns>
@@ -56,6 +56,7 @@ namespace Data.Repositories
             }
 
         }
+        
         /// <summary>
         /// Method which return Balance of the account based by Client ID Card
         /// </summary>
@@ -283,7 +284,7 @@ namespace Data.Repositories
         public void CreateNewAccount(AccountsModel acc)
         {
             string query = @"insert into Accounts 
-                             values (@IBAN,@Balance,@DebtLimit,@UserID,getdate())";
+                             values (@IBAN,@Balance,@DebtLimit,@UserID,getdate(),null)";
 
             try
             {
@@ -464,6 +465,8 @@ namespace Data.Repositories
                         {
 
                             command.CommandText = query;
+                           
+
                             command.Parameters.Add("@iban", SqlDbType.NVarChar).Value = account.IBAN;
                             command.Parameters.Add("@debtLimit", SqlDbType.Money).Value = account.DebtLimit;
 

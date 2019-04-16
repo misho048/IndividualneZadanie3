@@ -280,6 +280,7 @@
             this.textBoxDebtLimit.Name = "textBoxDebtLimit";
             this.textBoxDebtLimit.Size = new System.Drawing.Size(210, 22);
             this.textBoxDebtLimit.TabIndex = 37;
+            this.textBoxDebtLimit.TextChanged += new System.EventHandler(this.textBoxDebtLimit_TextChanged);
             // 
             // textBoxBalance
             // 
@@ -342,7 +343,7 @@
             this.Controls.Add(this.cmdUpdate);
             this.Name = "frmClientManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmClientManagement";           
+            this.Text = "frmClientManagement";
             ((System.ComponentModel.ISupportInitialize)(this.dGVCreditcards)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

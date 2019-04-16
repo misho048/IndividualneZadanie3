@@ -38,8 +38,9 @@ namespace BankSystem
             _clientIdCard = clientIdCard;
             ReadyForUpdate();
             _isUpdate = true;
-            
-            
+          
+
+
         }
         /// <summary>
         /// Used when adding new account.
@@ -48,8 +49,9 @@ namespace BankSystem
         {
             _logic = logic;
             InitializeComponent();
-            labelIban.Text = _logic.GenerateIBAN();
+            label1ibangen.Text = _logic.GenerateIBAN();
             _isUpdate = false;
+          
         }
 
         /// <summary>
@@ -91,17 +93,19 @@ namespace BankSystem
                 _dataToShow[9] = txtHomeNumber.Text;
                 _dataToShow[10] = txtBoxCity.Text;
                 _dataToShow[11] = txtBoxPostalCode.Text;
-                _dataToShow[12] = labelIban.Text;
+                _dataToShow[12] = label1ibangen.Text;
                 _dataToShow[13] = cmbBoxDebetLimit.Text;                
                 _logic.UpdateUserInfo(_dataToShow);
+               
 
             }
             else
             {
                 _logic.CreateUser(txtboxFirstName.Text, txtBoxSurname.Text, txtBoxIDCardNumber.Text,
                     txtBoxPhoneNumber.Text, txtBoxEmail.Text, txtBoxStreetName.Text, Convert.ToInt32(txtHomeNumber.Text),
-                    txtBoxCity.Text, txtBoxPostalCode.Text, Convert.ToDecimal(cmbBoxDebetLimit.Text));
-
+                    txtBoxCity.Text, txtBoxPostalCode.Text, Convert.ToDecimal(cmbBoxDebetLimit.Text), label1ibangen.Text);
+                
+              
             }
             DialogResult = DialogResult.OK;
         }
@@ -122,11 +126,13 @@ namespace BankSystem
             txtHomeNumber.Text = _dataToShow[9];
             txtBoxCity.Text = _dataToShow[10];
             txtBoxPostalCode.Text = _dataToShow[11];
-            labelIban.Text = _dataToShow[12];
+            label1ibangen.Text = _dataToShow[12];
             cmbBoxDebetLimit.Text = _dataToShow[13];
         }
 
+        private void frmAccount_Load(object sender, EventArgs e)
+        {
 
-     
+        }
     }
 }

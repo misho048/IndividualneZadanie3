@@ -42,7 +42,7 @@ namespace BankSystem
         {
             Random random = new Random();
             string something = "SK";
-            while (something.Length < 24)
+            while (something.Length < 23)
             {
                 something += $"{random.Next(0, 9)}";
             }
@@ -66,7 +66,7 @@ namespace BankSystem
 /// <param name="PostalCode"></param>
 /// <param name="DebetLimit"></param>
         public void CreateUser(string FirstName, string LastName, string IDCardNumber, string PhoneNumber,
-            string Email, string StreetName, int HomeNumber, string City, string PostalCode, decimal DebetLimit)
+            string Email, string StreetName, int HomeNumber, string City, string PostalCode, decimal DebetLimit,string IBAN)
         {
             UserModel user = new UserModel
             {
@@ -90,9 +90,9 @@ namespace BankSystem
             AccountsModel acc = new AccountsModel();
 
             acc.Balance = 0;
-            acc.DebtLimit = 0;
+            acc.DebtLimit = DebetLimit;
             acc.UserID = userRepo.GetLastID();
-            acc.IBAN = GenerateIBAN();
+            acc.IBAN = IBAN;
 
 
 
